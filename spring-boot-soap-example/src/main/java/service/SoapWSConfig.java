@@ -17,13 +17,18 @@ import org.springframework.xml.xsd.XsdSchema;
 public class SoapWSConfig extends WsConfigurerAdapter {
 	
 	@Bean
-	public ServletRegistrationBean messageDispatcherServlet(ApplicationContext applicationContext) {
+	public ServletRegistrationBean<MessageDispatcherServlet> messageDispatcherServlet(ApplicationContext applicationContext) {
 		MessageDispatcherServlet servlet = new MessageDispatcherServlet();
 		servlet.setApplicationContext((org.springframework.context.ApplicationContext) applicationContext);
 		servlet.setTransformWsdlLocations(true);
-		return new ServletRegistrationBean(servlet, "/ws/*");
+		return new ServletRegistrationBean<MessageDispatcherServlet>(servlet, "/ws/*");
 	}
-
+	
+	@Bean
+	public XsdSchema countriesSchema() {
+		return new SimpleXsdSchema(new ClassPathResource("countries.xsd"));
+	}
+	
 	@Bean(name = "countries")
 	public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema countriesSchema) {
 		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
@@ -34,8 +39,5 @@ public class SoapWSConfig extends WsConfigurerAdapter {
 		return wsdl11Definition;
 	}
 
-	@Bean
-	public XsdSchema countriesSchema() {
-		return new SimpleXsdSchema(new ClassPathResource("Info.XSD"));
-	}
+
 }
