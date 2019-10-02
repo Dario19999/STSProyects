@@ -3,8 +3,9 @@ package com.royalholiday.ws.royalholidayclient;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import generated.SearchOwner;
 import generated.SearchOwnerRQ;
-import wsclient.OwnerInfoClient;
+import generated.SearchOwnerResponse;
 
 @SpringBootApplication
 public class RoyalholidayclientApplication {
@@ -28,9 +29,12 @@ public class RoyalholidayclientApplication {
 		setInfo.setEjecutivo(ejecutivo);
 		setInfo.setToken(token);
 		setInfo.setLive(live);
+				
+		SearchOwner sr = new SearchOwner();
+		SearchOwnerResponse resp = new SearchOwnerResponse();		
 		
-		OwnerInfoClient test = new OwnerInfoClient();
-		test.setSearchParams(setInfo);
+		sr.setObjetoParametro(setInfo);
+		resp.getSearchOwnerResult();
 	}
 
 }
