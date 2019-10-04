@@ -1,19 +1,12 @@
 package com.royalholiday.ws.royalholidayclient;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import generated.OwnerInformation;
-import generated.OwnerInformationSoap;
-//import generated.SearchOwner;
-import generated.SearchOwnerRQ;
-//import generated.SearchOwnerResponse;
 
 @SpringBootApplication
 public class RoyalholidayclientApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RoyalholidayclientApplication.class, args);
+		/*SpringApplication.run(RoyalholidayclientApplication.class, args);
 		
 		String cadenaBusqueda = "12345";
 		String tipoContacto = "12345";
@@ -33,9 +26,9 @@ public class RoyalholidayclientApplication {
 		setInfo.setLive(live);
 		
 		OwnerInformationSoap service = new OwnerInformation().getOwnerInformationSoap();
-		service.searchOwner(setInfo).getInfoCuenta();
+		service.searchOwner(setInfo).isSuccess();
 
-		/*SearchOwner sr = new SearchOwner();
+		SearchOwner sr = new SearchOwner();
 		SearchOwnerResponse resp = new SearchOwnerResponse();	
 		
 		sr.setObjetoParametro(setInfo);
